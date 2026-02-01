@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEN LIM - ACTS ADVISORY | Prudential Assurance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #ee4343;
+            --prudential-blue: #ee4343;
+            --accent-gold: #d4af37;
+            --dark-text: #333333;
+            --light-bg: #f8fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--light-bg) 0%, #e0f2fe 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--dark-text);
+        }
+
+        .container {
+            background: white;
+            border-radius: 24px;
+            padding: 35px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 102, 204, 0.15);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--prudential-blue));
+        }
+
+        /* 顶部标志区 */
+        .logo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .company-logo {
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--primary-blue);
+            letter-spacing: 1px;
+        }
+
+        .company-logo span {
+            color: var(--accent-gold);
+        }
+
+        .prudential-badge {
+            background: var(--prudential-blue);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* 个人信息区 */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--primary-blue), var(--prudential-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .chinese-name {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .title {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .education {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* 标语区 */
+        .motto {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .motto-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--prudential-blue);
+            margin-bottom: 8px;
+        }
+
+        .motto-subtext {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* 联系信息 */
+        .contact-info {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--prudential-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-details {
+            flex-grow: 1;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .contact-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+
+        .contact-value a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+
+        /* 地址区 */
+        .address-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .address-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--prudential-blue);
+            font-weight: 600;
+        }
+
+        .address-text {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* 按钮区 */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--prudential-blue));
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 102, 204, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* 语言标签 */
+        .languages {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .language-tag {
+            background: #e0f2fe;
+            color: var(--primary-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* 二维码区域 */
+        .qrcode-section {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .qrcode-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .qrcode-container {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 520px) {
+            .container {
+                padding: 25px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+        }
+
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 公司标志区 -->
+    <div class="logo-header">
+        <div class="company-logo">ACTS <span>ADVISORY GROUP</span></div>
+        <div class="prudential-badge">Prudential Assurance</div>
+    </div>
+
+    <!-- 个人信息区 -->
+    <div class="profile-section">
+        <div class="profile-image" id="profileImage">
+            BL
+        </div>
+        <div class="profile-info">
+            <h1 class="name">BEN LIM</h1>
+<!--            <div class="chinese-name">林国成</div>-->
+            <div class="title">Wealth Planner</div>
+            <div class="education">Bachelor Degree In IT</div>
+        </div>
+    </div>
+
+<!--    &lt;!&ndash; 公司标语 &ndash;&gt;-->
+<!--    <div class="motto">-->
+<!--        <div class="motto-text">Attitude Creates Total Success</div>-->
+<!--        <div class="motto-subtext">ACTS Advisory Group Philosophy</div>-->
+<!--    </div>-->
+
+    <!-- 联系信息 -->
+    <div class="contact-info">
+        <div class="contact-item">
+            <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="contact-details">
+                <div class="contact-label">MOBILE</div>
+                <div class="contact-value">+60 18-409 3145</div>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+                <div class="contact-label">EMAIL</div>
+                <div class="contact-value">
+                    <a href="mailto:ksim.ben@gmail.com">ksim.ben@gmail.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <div class="contact-icon">
+                <i class="fas fa-globe"></i>
+            </div>
+            <div class="contact-details">
+                <div class="contact-label">WEBSITE</div>
+                <div class="contact-value">
+                    <a href="https://www.prudential.com.my" target="_blank">www.prudential.com.my</a>
+                    <a href="https://www.actsadvisory.com" target="_blank">www.actsadvisory.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 地址信息 -->
+    <div class="address-card">
+        <div class="address-title">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>OFFICE ADDRESS</span>
+        </div>
+        <div class="address-text">
+            No: A-04-05, Da'men USJ Komersil, Persiaran Kewajipan, USJ 1, 47600 Subang Jaya, Selangor.
+        </div>
+    </div>
+
+    <!-- 行动按钮 -->
+    <div class="action-buttons">
+        <button class="btn btn-primary" onclick="saveContact()">
+            <i class="fas fa-user-plus"></i>
+            Save Contact
+        </button>
+        <button class="btn btn-secondary" onclick="window.location.href='tel:+60184093145'">
+            <i class="fas fa-phone"></i>
+            Call Now
+        </button>
+    </div>
+
+    <!-- 语言能力 -->
+    <div class="languages">
+        <div class="language-tag">English</div>
+        <div class="language-tag">Mandarin 中文</div>
+        <div class="language-tag">Malay Bahasa</div>
+    </div>
+
+    <!-- 二维码区 -->
+    <div class="qrcode-section">
+        <div class="qrcode-title">Scan to save digital business card</div>
+        <div class="qrcode-container">
+            <!-- 二维码占位符 -->
+            <div style="width:100%;height:100%;background:#f0f9ff;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#0066cc;">
+                <i class="fas fa-qrcode fa-3x"></i>
+                <div style="font-size:12px;margin-top:10px;text-align:center;">
+                    ACTS ADVISORY<br>
+                    Digital Card
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 配置信息
+    const config = {
+        myInfo: {
+            name: "BEN LIM",
+            //chineseName: "林国成",
+            englishName: "Ben Lim Kok Seng",
+            title: "Wealth Planner",
+            education: "Bachelor Degree In IT",
+            company: "ACTS ADVISORY GROUP",
+            //motto: "Attitude Creates Total Success",
+            parentCompany: "Prudential Assurance Malaysia Berhad (107655-U)",
+            address: "No: A-04-05, Da'men USJ Komersil, Persiaran Kewajipan, USJ 1, 47600 Subang Jaya, Selangor.",
+            phone: "+60 18-409 3145",
+            phoneClean: "+60184093145",
+            website: "https://www.actsadvisory.com",
+            email: "ksim.ben@gmail.com",
+            //languages: ["English", "Mandarin", "Malay"]
+        },
+        formspree: {
+            endpoint: "https://formspree.io/f/xojwboon"
+        }
+    };
+
+    // 保存联系人功能
+    function saveContact() {
+        // 创建vCard内容
+        const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:${config.myInfo.name}
+N:Lim;Ben;;;
+ORG:ACTS ADVISORY GROUP
+TITLE:${config.myInfo.title}
+NOTE:${config.myInfo.education}
+TEL;TYPE=CELL,VOICE:${config.myInfo.phoneClean}
+EMAIL:${config.myInfo.email}
+ADR;TYPE=WORK:;;${config.myInfo.address}
+URL:${config.myInfo.website}
+CATEGORIES:Financial Advisor,Wealth Planner
+X-COMPANY:Prudential Assurance Malaysia Berhad
+X-MOTTO:${config.myInfo.motto}
+END:VCARD`;
+
+        // 创建Blob并下载
+        const blob = new Blob([vCard], { type: 'text/vcard;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `Ben Lim - ACTS Advisory.vcf`;
+        link.style.display = 'none';
+
+        document.body.appendChild(link);
+        link.click();
+
+        setTimeout(() => {
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            // 显示成功消息
+            alert(`✅ ${config.myInfo.name}'s contact card saved!\n\nNext steps:\n1. Open the downloaded file\n2. Choose "Add to Contacts"\n3. Save with photo`);
+
+            // 询问是否要交换信息
+            setTimeout(() => {
+                if (confirm("Would you like to share your contact information with Ben?")) {
+                    showExchangeForm();
+                }
+            }, 1000);
+        }, 100);
+    }
+
+    // 显示交换表单
+    function showExchangeForm() {
+        const userInfo = prompt("Please enter your name and phone number (format: Name, Phone):\n\nExample: John Tan, +60 12-345 6789");
+
+        if (userInfo && userInfo.trim()) {
+            // 解析用户输入
+            const parts = userInfo.split(',');
+            const userName = parts[0]?.trim();
+            const userPhone = parts[1]?.trim();
+
+            if (userName && userPhone) {
+                sendExchangeRequest(userName, userPhone);
+            } else {
+                alert("Please provide both name and phone number.");
+            }
+        }
+    }
+
+    // 发送交换请求到Formspree
+    async function sendExchangeRequest(userName, userPhone) {
+        try {
+            const response = await fetch(config.formspree.endpoint, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: `📇 Contact Exchange: ${userName}`,
+                    name: userName,
+                    phone: userPhone,
+                    message: "Contact exchange from digital business card QR code",
+                    timestamp: new Date().toLocaleString(),
+                    source: "ACTS Advisory Digital Card",
+                    advisor: config.myInfo.name,
+                    advisorPhone: config.myInfo.phone,
+                    advisorEmail: config.myInfo.email
+                })
+            });
+
+            if (response.ok) {
+                alert("Thank you! Ben will contact you soon.");
+            } else {
+                alert("Thank you for sharing your information!");
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert("Information received. Thank you!");
+        }
+    }
+
+    // 页面加载时初始化
+    document.addEventListener('DOMContentLoaded', function() {
+        // 可以为头像添加更多动态效果
+        const profileImage = document.getElementById('profileImage');
+
+        // 点击头像可以更换（未来功能）
+        profileImage.addEventListener('click', function() {
+            // 这里可以添加头像上传功能
+            console.log('Avatar clicked - future feature: upload photo');
+        });
+
+        // 添加悬停效果
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    });
+
+    // 社交分享功能（可选）
+    function shareContact() {
+        const shareText = `Connect with ${config.myInfo.name} - ${config.myInfo.title} at ACTS ADVISORY GROUP`;
+        const shareUrl = window.location.href;
+
+        if (navigator.share) {
+            navigator.share({
+                title: `${config.myInfo.name}'s Digital Card`,
+                text: shareText,
+                url: shareUrl
+            });
+        } else {
+            // 复制到剪贴板
+            navigator.clipboard.writeText(`${shareText}\n\n${shareUrl}`)
+                .then(() => alert('Link copied to clipboard!'))
+                .catch(err => console.error('Copy failed:', err));
+        }
+    }
+</script>
+</body>
+</html>
