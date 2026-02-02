@@ -517,7 +517,10 @@
                 <label class="form-label">Company</label>
                 <input type="text" name="company" class="form-input" placeholder="ABC Company">
             </div>
-
+            <div class="form-group">
+                <label class="form-label">Occupation</label>
+                <input type="text" name="position" class="form-input" placeholder="Manager / Director">
+            </div>
             <div class="form-group">
                 <label class="form-label">Phone Number *</label>
                 <input type="tel" name="phone" class="form-input" required placeholder="+60 12-345 6789">
@@ -623,8 +626,8 @@ END:VCARD`;
         // 添加 Formspree 需要的字段
         const name = formData.get('name');
         formData.append('_subject', `📇 Contact Exchange: ${name}`);
-        formData.append('_replyto', formData.get('email') || 'ksim.ben@gmail.com');
-        formData.append('_cc', 'ksim.ben@gmail.com');
+        //formData.append('_replyto', formData.get('email') || 'kslim.ben@gmail.com');
+        formData.append('_cc', 'kslim.ben@gmail.com');
 
         try {
             const response = await fetch(config.formspree.endpoint, {
